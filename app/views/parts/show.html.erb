@@ -1,0 +1,31 @@
+<h2><%=h @part.name %></h2>
+<p>
+  <b>Partno:</b>
+  <%=h @part.partno %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @part.description %>
+</p>
+<h3>Tags:</h3>
+<ul>
+  <%- @part.tags.each do |tag| -%>
+    <li><%= link_to h(tag.name), parts_path(:tag => tag.name) %></li>
+  <%- end -%>
+</ul>
+<h3>Stock</h3>
+<ul>
+  <%- @part.part_instances.each do |part_instance| -%>
+    <li>
+      
+      <%= link_to pluralize(part_instance.number, "Piece", "Pieces")  + " @ #{part_instance.location}", edit_part_instance_path(part_instance) %>
+      
+    </li>
+  <%- end -%>
+  <li><%= link_to "Add Stock", new_part_part_instance_path(@part) %></li>
+</ul>
+
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

@@ -1,0 +1,5 @@
+<h1>Add Stock for <%=h @part.name %> (<%=h @part.partno %>)</h1>
+<%- form_for @part_instance, :url => part_part_instances_path do |f| -%>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p><%= f.submit "Save" %></p>
+<%- end -%>

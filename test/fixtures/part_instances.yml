@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  part_id: 1
+  number: 1
+  location: MyString
+
+two:
+  part_id: 1
+  number: 1
+  location: MyString

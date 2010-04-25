@@ -1,0 +1,35 @@
+<h1>Listing parts</h1>
+
+<%- unless params[:tag].blank? -%>
+<p>Tagged with <%= h(params[:tag]) %> (<%= link_to "show all", parts_path %>)</p>
+<%- end -%>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Partno</th>
+    <th>Stock</th>
+  </tr>
+
+<% @parts.each do |part| %>
+  <tr>
+    <td><%=link_to h(part.name), part_path(part) %></td>
+    <td><%=h part.partno %></td>
+    <td><%= part.part_instances.not_null.sum(:number) %> in <%= pluralize(part.part_instances.count, "Place", "Places") %></td>
+    <td><%= link_to 'Edit', edit_part_path(part) %></td>
+    <td><%= link_to 'Destroy', part, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New part', new_part_path, :class => 'button' %>
+
+<%- content_for :sidebar do -%>
+  <h3>All Tags</h3>
+  <ul>
+    <%- @tags.each do |tag| -%>
+      <li>
+        <%= link_to h(tag.name), parts_path(:tag => tag.name) %> (<%= tag.count %>)
+      </li>
+    <%- end -%>
+  </ul>
+<%- end -%>
