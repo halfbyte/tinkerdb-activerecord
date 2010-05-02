@@ -1,4 +1,5 @@
 config/database.yml
+config/rpx.yml
 tmp/**/*
 log/*.log
 db/*.sqlite3
