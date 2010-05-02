@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
   config.gem "haml"
+  config.gem "rpx_now"
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.
@@ -39,4 +40,9 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  
+  config.after_initialize do # so rake gems:install works
+    RPXNow.api_key = "81191fd599133f06d9c21134c71931091e38700a"
+  end
+  
 end

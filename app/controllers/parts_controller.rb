@@ -1,4 +1,7 @@
 class PartsController < ApplicationController
+
+  before_filter :login_required
+  
   # GET /parts
   # GET /parts.xml
   def index

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100425200918) do
+ActiveRecord::Schema.define(:version => 20100502200125) do
 
   create_table "part_instances", :force => true do |t|
     t.integer  "part_id"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20100425200918) do
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "parts", :force => true do |t|
@@ -39,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20100425200918) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "identifier"
+    t.string   "name"
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

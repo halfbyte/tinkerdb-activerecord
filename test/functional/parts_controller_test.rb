@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class PartsControllerTest < ActionController::TestCase
+  
+  def setup
+    login_as(:standard)
+  end  
+  
   test "should get index" do
     get :index
     assert_response :success
@@ -14,7 +19,7 @@ class PartsControllerTest < ActionController::TestCase
 
   test "should create part" do
     assert_difference('Part.count') do
-      post :create, :part => { }
+      post :create, :part => { :partno => 'xfahh12', :name => 'Komisches Blinkendings'}
     end
 
     assert_redirected_to part_path(assigns(:part))

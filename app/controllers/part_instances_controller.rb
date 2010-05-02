@@ -1,5 +1,7 @@
 class PartInstancesController < ApplicationController
   
+  before_filter :login_required
+  
   before_filter :load_part, :only => [:new, :create]
   
   def new
@@ -8,6 +10,7 @@ class PartInstancesController < ApplicationController
   
   def create
     @part_instance = @part.part_instances.build(params[:part_instance])
+    @part_instance.user = current_user
     if  @part_instance.save
       flash[:notice] = "Your Stock item has been saved"
       redirect_to part_path(@part)
