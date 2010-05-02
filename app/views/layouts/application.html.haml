@@ -17,7 +17,7 @@
               Hi, #{h(current_user.username)}
               (#{link_to "Log out", session_path, :method => :delete})
             - else
-              link_to "Log in", new_session_path
+              = link_to "Log in", new_session_path
           
       #content
         - flash.each do |type, message|
